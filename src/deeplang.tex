@@ -1,0 +1,251 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass[11pt, a4paper,oneside]{ctexbook}
+
+\input{title-page}
+
+\usepackage{graphicx} % Required for including pictures
+\graphicspath{{Images/}} % Specifies the directory where pictures are stored
+
+%----------------------------------------------------------------------------------------
+%       Localization
+%----------------------------------------------------------------------------------------
+\usepackage[UTF8,adobefonts]{ctex}
+\usepackage{array, booktabs}
+\usepackage{graphicx}
+\usepackage[x11names]{xcolor}
+\usepackage{colortbl}
+\usepackage{fontspec}
+\newcommand{\foo}{\color{baseD}\makebox[0pt]{\textbullet}\hskip-0.5pt\vrule width 1pt\hspace{\labelsep}}
+
+%\setmainfont[Boldont=WenQuanYi Micro Hei]{AR PL SungtiL GB}
+%\setsansfont[BoldFont=WenQuanYi Micro Hei]{AR PL KaitiM GB}
+%\setmonofont{DejaVu Sans Mono}
+
+%\XeTeXlinebreaklocale "zh"
+%\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+
+\usepackage[top=1in,bottom=1in,left=1.25in,right=1.25in]{geometry}
+%\linespread{1.2}
+
+\usepackage[Glenn]{fncychap}
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+
+%----------------------------------------------------------------------------------------
+%       Useful Packages
+%----------------------------------------------------------------------------------------
+\usepackage{color}
+\usepackage{url}
+\usepackage[colorlinks, linkcolor=black,anchorcolor=black, citecolor=black]{hyperref}
+
+\usepackage{xcolor} % Required for specifying colors by name
+\definecolor{ocre}{RGB}{243,102,25} % Define the orange color used for highlighting throughout the book
+
+% BASE16
+\definecolor{base0}{HTML}{181818}
+\definecolor{base1}{HTML}{282828}
+\definecolor{base2}{HTML}{383838}
+\definecolor{base3}{HTML}{585858}
+\definecolor{base4}{HTML}{B8B8B8}
+\definecolor{base5}{HTML}{D8D8D8}
+\definecolor{base6}{HTML}{E8E8E8}
+\definecolor{base7}{HTML}{F8F8F8}
+\definecolor{base8}{HTML}{AB4642}
+\definecolor{base9}{HTML}{DC9656}
+\definecolor{baseA}{HTML}{F7CA88}
+\definecolor{baseB}{HTML}{A1B56C}
+\definecolor{baseC}{HTML}{86C1B9}
+\definecolor{baseD}{HTML}{7CAFC2}
+\definecolor{baseE}{HTML}{BA8BAF}
+\definecolor{baseF}{HTML}{A16946}
+\definecolor{Gray}{HTML}{CCCCCC}
+\definecolor{linkcolor}{HTML}{EC008C}
+\definecolor{codecolorpink}{HTML}{CC00FF}
+\definecolor{NoteColorFont}{HTML}{6D727D}
+\definecolor{NoteColorLine}{HTML}{C3CAD9}
+\definecolor{ExeColorFont}{HTML}{FF9900}
+\definecolor{ExeColorLine}{HTML}{FFF678}
+\definecolor{ExeColorBack}{HTML}{FFFFCC}
+\definecolor{ThinkColorFont}{HTML}{629D81}
+\definecolor{ThinkColorLine}{HTML}{93E87D}
+\definecolor{ThinkColorBack}{HTML}{C1FA9B}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm} % For math equations, theorems, symbols, etc
+\usepackage{booktabs} % For tables
+\usepackage{tabularx}
+\usepackage{multirow} % for multiple row tables.
+
+%----------------------------------------------------------------------------------------
+%       Some Extra Definitions
+%----------------------------------------------------------------------------------------
+
+\RequirePackage[framemethod=default]{mdframed} % Required for creating the theorem, definition, exercise and corollary boxes
+
+% Exercise box
+\newmdenv[skipabove=10pt,
+skipbelow=10pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+backgroundcolor=ExeColorBack,
+linecolor=ExeColorLine,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+innerbottommargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=12pt]{eBox}
+
+% Thinking box
+\newmdenv[skipabove=10pt,
+skipbelow=10pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+backgroundcolor=ThinkColorBack!30,
+linecolor=ThinkColorLine,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+innerbottommargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=12pt]{tBox}
+
+% Note box
+\newmdenv[skipabove=10pt,
+skipbelow=10pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+backgroundcolor=NoteColorLine!15,
+linecolor=NoteColorLine,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+innerbottommargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=12pt]{nBox}
+
+% Boxed/framed environments
+\newtheoremstyle{ocrenumbox}% % Theorem style name
+{0pt}% Space above
+{0pt}% Space below
+{\normalfont}% % Body font
+{}% Indent amount
+{\small\bf\sffamily\color{ExeColorFont}}% % Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head	
+{\small\sffamily\color{ExeColorFont}\thmname{#1}\nobreakspace\thmnumber{#2}% Theorem text (e.g. Exercise 2.1)
+\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
+\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+
+\newtheoremstyle{purplenumbox}% % Theorem style name
+{0pt}% Space above
+{0pt}% Space below
+{\normalfont}% % Body font
+{}% Indent amount
+{\small\bf\sffamily\color{ThinkColorFont}}% % Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head	
+{\small\sffamily\color{ThinkColorFont}\thmname{#1}\nobreakspace\thmnumber{#2}
+% Theorem text (e.g. Thinking 2.1)
+\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
+\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+
+\newtheoremstyle{blackbox} % Theorem style name
+{0pt}% Space above
+{0pt}% Space below
+{\normalfont}% Body font
+{}% Indent amount
+{\small\bf\sffamily}% Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\color{NoteColorFont}\thmname{#1}\nobreakspace\thmnumber{#2}
+% Theorem text (e.g. Theorem 2.1)
+\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}% Optional theorem note
+
+% Defines the theorem text style for each type of theorem to one of the three styles above
+\theoremstyle{ocrenumbox}
+\newtheorem{exerciseT}{Exercise}[chapter]
+\theoremstyle{purplenumbox}
+\newtheorem{thinkingT}{Thinking}[chapter]
+\theoremstyle{blackbox}
+\newtheorem{noteT}{Note}[section]
+
+\newenvironment{exercise}{\begin{eBox}\begin{exerciseT}}{\hfill{\color{ExeColorFont}\tiny\ensuremath{\blacksquare}}\end{exerciseT}\end{eBox}}
+\newenvironment{thinking}{\begin{tBox}\begin{thinkingT}}{\hfill{\color{ThinkColorFont}\tiny\ensuremath{\blacksquare}}\end{thinkingT}\end{tBox}}
+\newenvironment{note}{\begin{nBox}\begin{noteT}}{\end{noteT}\end{nBox}}
+
+%----------------------------------------------------------------------------------------
+%       Code Environment
+%----------------------------------------------------------------------------------------
+\usepackage{minted}
+\usemintedstyle{manni}
+
+% code box
+\newmdenv[backgroundcolor=base7,
+linecolor=baseD,
+bottomline=false,
+leftline=true,
+rightline=false,
+topline=false,
+linewidth=2pt,
+leftmargin=13pt]{pcodeBox}
+
+\renewcommand{\theFancyVerbLine}{
+  \sffamily
+  \textcolor{baseB}{\arabic{FancyVerbLine}
+  }
+}
+
+\usepackage{caption}
+
+%\captionsetup{type=codeCaption}
+\newenvironment{codeBox}{\begin{pcodeBox}\fontsize{9pt}{9pt}}{\end{pcodeBox}}
+\newenvironment{codeBoxWithCaption}[1]{\begin{pcodeBox}[frametitle={\captionof{listing}{#1}\color{base6}\rule{\textwidth}{0.7pt}}]\fontsize{9pt}{9pt}}{\end{pcodeBox}}
+
+\BeforeBeginEnvironment{minted}{\begin{codeBox}}
+\AfterEndEnvironment{minted}{\end{codeBox}}
+
+%----------------------------------------------------------------------------------------
+%       Lists
+%----------------------------------------------------------------------------------------
+\usepackage{enumitem}
+\setlist[description]{labelindent=22pt} 
+
+%----------------------------------------------------------------------------------------
+%       Main Body
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+\pagestyle{empty} % Removes page numbers
+\titleGP % This command includes the title page
+
+\frontmatter
+\tableofcontents
+\pagestyle{plain}
+\include{preface/0-BasicInformation}
+\frontmatter
+
+\mainmatter
+\pagestyle{fancy}
+\include{chapter/Type/BasicType}
+
+\begin{appendix}
+\input{appendix}
+\end{appendix}
+
+\backmatter
+\include{postscript/Resources}
+\include{postscript/TheExitPoint}
+
+\end{document}
